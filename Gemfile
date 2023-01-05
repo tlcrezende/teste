@@ -15,14 +15,15 @@ gem "devise_token_auth", "~> 1.2"
 gem "active_model_serializers", "~> 0.10.13"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'rack-cors'
+gem "rspec-rails", "~> 6.0"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec", "~> 3.12"
 end
 
 group :development do
 end
+
 
 
 
