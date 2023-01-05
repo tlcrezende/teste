@@ -3,7 +3,7 @@ class Api::V1::BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.search_by_title(params[:search_by_title]).search_by_author(params[:search_by_author]).search_by_genre(params[:search_by_genre])
 
     render json: @books
   end
