@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
           
   include DeviseTokenAuth::Concerns::User
 
-  has_many :user_books
+  has_many :user_books, dependent: :destroy
   has_many :books, through: :user_books
 end

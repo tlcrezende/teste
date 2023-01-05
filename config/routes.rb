@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :books
-      resources :user_books
+      resources :user_books, only: [:index, :create, :destroy]
     end
   end
 end

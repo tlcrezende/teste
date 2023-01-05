@@ -5,4 +5,9 @@ RSpec.describe Book, type: :model do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:author) }
   end
+
+  describe 'associations' do
+    it { should have_many(:user_books).dependent(:destroy) }
+    it { should have_many(:users) }
+  end
 end
