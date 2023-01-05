@@ -1,30 +1,26 @@
 require "rails_helper"
 
-# RSpec.describe BooksController, type: :routing do
-#   describe "routing" do
-#     it "routes to #index" do
-#       expect(get: "/books").to route_to("books#index")
-#     end
+RSpec.describe Api::V1::BooksController, type: :routing do
+  describe "routing" do
+    it "routes to #index" do
+      expect(get: "/api/books").to route_to({"format"=>:json, "controller"=>"api/v1/books", "action"=>"index"})
+    end
 
-#     it "routes to #show" do
-#       expect(get: "/books/1").to route_to("books#show", id: "1")
-#     end
+    it "routes to #show" do
+      expect(get: "/api/books/1").to route_to({"format"=>:json, "controller"=>"api/v1/books", "action"=>"show", "id"=>"1"})
+    end
 
 
-#     it "routes to #create" do
-#       expect(post: "/books").to route_to("books#create")
-#     end
+    it "routes to #create" do
+      expect(post: "/api/books").to route_to({"format"=>:json, "controller"=>"api/v1/books", "action"=>"create"})
+    end
 
-#     it "routes to #update via PUT" do
-#       expect(put: "/books/1").to route_to("books#update", id: "1")
-#     end
+    it "routes to #update via PUT" do
+      expect(put: "/api/books/1").to route_to({"format"=>:json, "controller"=>"api/v1/books", "action"=>"update", "id"=>"1"})
+    end
 
-#     it "routes to #update via PATCH" do
-#       expect(patch: "/books/1").to route_to("books#update", id: "1")
-#     end
-
-#     it "routes to #destroy" do
-#       expect(delete: "/books/1").to route_to("books#destroy", id: "1")
-#     end
-#   end
-# end
+    it "routes to #destroy" do
+      expect(delete: "/api/books/1").to route_to({"format"=>:json, "controller"=>"api/v1/books", "action"=>"destroy", "id"=>"1"})
+    end
+  end
+end

@@ -5,10 +5,6 @@ RSpec.describe "/books", type: :request do
   let(:valid_attributes) { attributes_for :book }
   let(:invalid_attributes) { attributes_for :invalid }
 
-  # This should return the minimal set of values that should be in the headers
-  # in order to pass any filters (e.g. authentication) defined in
-  # BooksController, or in your router and rack
-  # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
     {}
   }
