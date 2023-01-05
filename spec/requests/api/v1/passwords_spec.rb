@@ -13,5 +13,11 @@ RSpec.describe 'Passwords', type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to eq('application/json; charset=utf-8')
     end
+
+    it 'not updates password' do
+      put '/api/auth', params: {}, headers: user.create_new_auth_token, as: :json
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(json_response).to have_key(:errors)
+    end
   end
 end
