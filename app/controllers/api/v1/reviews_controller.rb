@@ -1,7 +1,9 @@
 class Api::V1::ReviewsController < ApplicationController
   # before_action :set_review
+include Average
+
   before_action :authenticate_api_user!, only: :create
-  before_action :set_review_books, only: :index_book
+  before_action :set_review_books, :average_book, only: :index_book
   before_action :set_review_users, only: :index_user
 
   def index
@@ -21,14 +23,14 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def index_book
-    sum_score = 0
-    @reviews.each do |review|
-      sum_score += review.score
-    end
+    # sum_score = 0
+    # @reviews.each do |review|
+    #   sum_score += review.score
+    # end
 
-    average = sum_score/@reviews.count
+    # average = sum_score/@reviews.count
 
-    render json: {average: average, reviews: @reviews}
+    render json: {average: @average, reviews: @reviews}
   end
 
   def index_user
