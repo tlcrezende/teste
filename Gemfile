@@ -27,3 +27,5 @@ end
 
 
 
+
+gem "rubocop", "~> 1.42"
