@@ -1,12 +1,19 @@
 class Api::V1::UserBooksController < ApplicationController
+  include Paginable
+  
   before_action :set_user_book, only: :destroy
   before_action :authenticate_api_user!
 
   # GET /user_books
   def index
-    @user_books = current_api_user.books.all
+    @user_books = current_api_user.books
+                                  .search_by_title(params[:search_by_title])
+                                  .search_by_author(params[:search_by_author])
+                                  .search_by_genre(params[:search_by_genre])
+                                  .page(current_page)
+                                  .per(per_page) 
 
-    render json: @user_books
+    render json: @user_books, meta: meta_attributes(@user_books), adapter: :json
   end
 
   # POST /user_books
