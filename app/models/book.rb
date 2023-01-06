@@ -14,8 +14,8 @@ class Book < ApplicationRecord
     fantasy: 5,
     historical_fiction: 6,
     horror: 7,
-    humour_satire: 9,
-    other: 10
+    humour_satire: 8,
+    other: 9
 	}
 
   scope :search_by_title, -> (search_by_title) { where('LOWER(title) LIKE ?', "%#{search_by_title.downcase}%") if search_by_title.present? }
