@@ -17,11 +17,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'rack-cors'
 gem "rubocop", "~> 1.42"
 gem "kaminari", "~> 1.2"
+gem "factory_bot_rails", "~> 6.2"
+gem "faker", "~> 3.1"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "factory_bot_rails", "~> 6.2"
-  gem "faker", "~> 3.1"
   gem "rspec-rails", "~> 6.0"
 end
 
