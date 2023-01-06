@@ -10,7 +10,6 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     @reviews = Review.page(current_page).per(per_page) 
 
-
     render json: @reviews, meta: meta_attributes(@reviews), adapter: :json
   end
 
@@ -25,7 +24,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def index_book
-    render json: {average: @average, reviews: @reviews}, meta: meta_attributes(@reviews), adapter: :json
+    render json: @reviews
   end
 
   def index_user
