@@ -1,15 +1,17 @@
 class Api::V1::ReviewsController < ApplicationController
   # before_action :set_review
-include Average
+  include Average
+  include Paginable
 
   before_action :authenticate_api_user!, only: :create
   before_action :set_review_books, :average_book, only: :index_book
   before_action :set_review_users, only: :index_user
 
   def index
-    @reviews = Review.all
+    @reviews = Review.page(current_page).per(per_page) 
 
-    render json: @reviews
+
+    render json: @reviews, meta: meta_attributes(@reviews), adapter: :json
   end
 
   def create
@@ -23,18 +25,11 @@ include Average
   end
 
   def index_book
-    # sum_score = 0
-    # @reviews.each do |review|
-    #   sum_score += review.score
-    # end
-
-    # average = sum_score/@reviews.count
-
-    render json: {average: @average, reviews: @reviews}
+    render json: {average: @average, reviews: @reviews}, meta: meta_attributes(@reviews), adapter: :json
   end
 
   def index_user
-    render json: @reviews
+    render json: @reviews, meta: meta_attributes(@reviews), adapter: :json
   end
 
   private
@@ -43,11 +38,11 @@ include Average
     end
 
     def set_review_books
-      @reviews = Book.find(params[:id]).reviews
+      @reviews = Book.find(params[:id]).reviews.page(current_page).per(per_page) 
     end
 
     def set_review_users
-      @reviews = User.find(params[:id]).reviews
+      @reviews = User.find(params[:id]).reviews.page(current_page).per(per_page) 
     end
 
     def review_params
