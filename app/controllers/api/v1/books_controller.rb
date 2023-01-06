@@ -1,11 +1,17 @@
 class Api::V1::BooksController < ApplicationController
+  include Paginable
+
   before_action :set_book, only: [:show, :update, :destroy]
 
   # GET /books
   def index
-    @books = Book.search_by_title(params[:search_by_title]).search_by_author(params[:search_by_author]).search_by_genre(params[:search_by_genre])
+    @books = Book.search_by_title(params[:search_by_title])
+                  .search_by_author(params[:search_by_author])
+                  .search_by_genre(params[:search_by_genre])
+                  .page(current_page)
+                  .per(per_page) 
 
-    render json: @books
+    render json: @books, meta: meta_attributes(@books), adapter: :json
   end
 
   # GET /books/1
