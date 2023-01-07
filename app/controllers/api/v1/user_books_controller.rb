@@ -35,7 +35,8 @@ class Api::V1::UserBooksController < ApplicationController
 
   # DELETE /user_books/1
   def destroy
-    @user_book.destroy
+    @user_book.destroy unless @user_book.nil?
+    render status: :ok
   end
 
   private
