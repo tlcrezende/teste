@@ -39,7 +39,5 @@ RSpec.describe 'Registrations', type: :request do
       expect(json_response).to have_key(:errors)
       expect(response).to have_http_status(:not_found)
     end
-
-    
   end
 end

@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:user_books).dependent(:destroy) }
     it { should have_many(:books) }
+    it { should have_many(:reviews).dependent(:destroy) }
   end
 
 end

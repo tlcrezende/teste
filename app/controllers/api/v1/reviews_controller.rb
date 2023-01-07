@@ -1,11 +1,12 @@
 class Api::V1::ReviewsController < ApplicationController
-  include Average
   include Paginable
-
+  include Average
+  
   before_action :authenticate_api_user!, only: :create
-  before_action :set_review_books, :average_book, only: [:index_book, :index_user]
   before_action :set_review_users, only: :index_user
-
+  before_action :set_review_books, only: :index_book
+  before_action :average_book, only: [:index_book, :index_user]
+  
   def index
     @reviews = Review.page(current_page).per(per_page) 
 
