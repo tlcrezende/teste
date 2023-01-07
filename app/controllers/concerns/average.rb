@@ -8,7 +8,6 @@ module Average
       sum_score += review.score
     end
 
-    @average = (sum_score/@reviews.count).round(2)
+    @average = @reviews.count > 0 ? (sum_score/@reviews.count).round(2) : 0
   end
-
 end
