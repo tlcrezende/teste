@@ -3,7 +3,6 @@ class Api::V1::BooksController < ApplicationController
 
   before_action :set_book, only: [:show, :update, :destroy]
 
-  # GET /books
   def index
     @books = Book.search_by_title(params[:search_by_title])
                   .search_by_author(params[:search_by_author])
@@ -14,12 +13,10 @@ class Api::V1::BooksController < ApplicationController
     render json: @books, meta: meta_attributes(@books), adapter: :json
   end
 
-  # GET /books/1
   def show
     render json: @book
   end
 
-  # POST /books
   def create
     @book = Book.new(book_params)
 
@@ -30,7 +27,6 @@ class Api::V1::BooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
       render json: @book
@@ -39,18 +35,15 @@ class Api::V1::BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
   def destroy
     @book.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :author, :genre)
     end

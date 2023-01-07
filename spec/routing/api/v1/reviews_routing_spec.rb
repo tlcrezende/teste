@@ -17,7 +17,5 @@ RSpec.describe Api::V1::ReviewsController, type: :routing do
     it "routes to #index_user" do
       expect(get: "/api/reviews/user/1").to route_to({"format"=>:json, "controller"=>"api/v1/reviews", "action"=>"index_user", "id"=>"1"})
     end
-
-
   end
 end

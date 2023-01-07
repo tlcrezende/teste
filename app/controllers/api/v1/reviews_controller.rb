@@ -1,12 +1,12 @@
 class Api::V1::ReviewsController < ApplicationController
-  # before_action :set_review
-  include Average
   include Paginable
-
+  include Average
+  
   before_action :authenticate_api_user!, only: :create
-  before_action :set_review_books, :average_book, only: :index_book
   before_action :set_review_users, only: :index_user
-
+  before_action :set_review_books, only: :index_book
+  before_action :average_book, only: [:index_book, :index_user]
+  
   def index
     @reviews = Review.page(current_page).per(per_page) 
 
@@ -23,19 +23,17 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
+  # Retorna todos os reviews de um livro específico
   def index_book
-    render json: @reviews
+    render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
 
+  # Retorna todos os reviews de um usuário específico
   def index_user
-    render json: @reviews, meta: meta_attributes(@reviews), adapter: :json
+    render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
 
   private
-    def set_review
-      @review = Review.find(params[:id])
-    end
-
     def set_review_books
       @reviews = Book.find(params[:id]).reviews.page(current_page).per(per_page) 
     end

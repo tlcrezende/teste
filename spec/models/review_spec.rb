@@ -5,6 +5,7 @@ RSpec.describe Review, type: :model do
     it { should validate_presence_of(:user_review) }
     it { should validate_presence_of(:book_id) }
     it { should validate_presence_of(:score) }
+    it { should validate_numericality_of(:score) }
   end
 
   describe 'associations' do
