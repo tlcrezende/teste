@@ -4,7 +4,7 @@ class Api::V1::ReviewsController < ApplicationController
   include Paginable
 
   before_action :authenticate_api_user!, only: :create
-  before_action :set_review_books, :average_book, only: :index_book
+  before_action :set_review_books, :average_book, only: [:index_book, :index_user]
   before_action :set_review_users, only: :index_user
 
   def index
@@ -24,11 +24,11 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def index_book
-    render json: @reviews
+    render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
 
   def index_user
-    render json: @reviews, meta: meta_attributes(@reviews), adapter: :json
+    render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
 
   private
