@@ -5,7 +5,7 @@ class ApiConstraints
     end
   
     def matches?(req)
-      # Error appear when the operator '&' isn't include, validation must be present
+      # Um erro aparece quando o operador '&' não está presente (validação obrigatória)
       @default || req.headers['Accept']&.include?("application/vnd.library.v#{@version}")
     end
 end
