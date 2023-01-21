@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: host.docker.internal
   username: thiago
   password: 123
   # For details on connection pooling, see Rails configuration guide
