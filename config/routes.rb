@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :reviews, only: [:index, :create]
       get '/reviews/book/:id' => 'reviews#index_book'
       get '/reviews/user/:id' => 'reviews#index_user'
+      get 'recommendation' => 'recommendation#first'
+      get 'other_recommendation' => 'recommendation#other'
     end
   end
 end
