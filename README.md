@@ -1,35 +1,13 @@
-## Desafio
+### A project has emerged for a digital library platform where users can organize their books and view reviews of other books to decide if they are worth including in their library.
+The main idea of ​​this project is that users can enter the platform, register their books, and define a note and a review for each one of them. They can also ask for database recommendation based on their personal library and general user ratings.
 
-### Surgiu um projeto de uma plataforma de uma biblioteca digital onde os usuários possam organizar seus livros e visualizar reviews de outros livros para decidir se vale a pena a inclusão destes em sua biblioteca.
-A ideia principal desse projeto é que os usuários possam entrar na plataforma, cadastrar seus livros, e definir uma nota e um review para cada um deles. O desafio aqui é construir a API para este projeto.
-
-#### Funcionalidades
-- Cadastro de usuários. Dados necessários:
-    - Nome;
-    - Email;
-    - Senha.
-    - Login;
-    - Logout;
-
-- Cadastro de livros. Dados necessários:
-    - Título;
-    - Autor;
-    - Gênero;
-    - Listagem dos livros;
-- Realizar o review de um livro. Dados necessários:
-    - Nota;
-    - Review.
-
-- Pesquisar livros por título, autor e gênero;
-- Visualizar os reviews e a nota média de um livro.
-
-
-- Entregáveis
-    - Link para a API (Dê preferência em realizar a integração com o Heroku Free);
-    - Link para o repositório gitlab;
-    - Documentação das requests (Dê preferência ao Postman).
-
-### Commits e MR's
-    - Utilizar padrão GITFLOW;
-    - Criar um Merge Request como a brach Develop de origem;
-    - Compartilhar o link do Merge Request por e-mail;
+#### Functionalities
+- User registration. Necessary data:
+- Create, sign in, sign out, update and validate a user 
+- List all books, show specific data for a book, create, update and delete it
+- List all the book in the user virtual library, choose books to add in his personal virtual library and delete it
+- Search books by title, author or genres
+- List all reviews in the database
+- List all reviews from specific book or user and create his own reviews
+- See the score of a specific book or specific user
+- Ask for book recommendations based in score and self genres
