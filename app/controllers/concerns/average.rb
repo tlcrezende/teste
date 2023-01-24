@@ -1,7 +1,7 @@
 module Average
   private
 
-  # Calcula a média das notas do livro selecionado 
+  # Calculates the average grades of the selected book
   def average_book
     sum_score = 0
     @reviews.each do |review|

@@ -16,10 +16,13 @@ gem "active_model_serializers", "~> 0.10.13"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'rack-cors'
 gem "rubocop", "~> 1.42"
-gem "kaminari", "~> 1.2"
 gem "factory_bot_rails", "~> 6.2"
 gem "faker", "~> 3.1"
-gem "kimurai", "~> 1.4"
+
+# Scraper
+gem "kaminari", "~> 1.2"
+gem "nokogiri", "~> 1.13"
+# gem "kimurai", "~> 1.4"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -36,4 +39,3 @@ group :development do
 end
 
 
-gem "nokogiri", "~> 1.13"

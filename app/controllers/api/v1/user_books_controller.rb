@@ -16,8 +16,7 @@ class Api::V1::UserBooksController < ApplicationController
   end
 
   def create
-
-    #Verifica se o livro já existe na biblioteca pessoa do usuário, caso positivo, não duplica o registro
+    #Checks if the book already exists in the user's personal library, if so, does not duplicate the record
     if current_api_user.user_books.where(book_id: user_book_params[:book_id]).empty?
       
       @user_book = current_api_user.user_books.new(user_book_params)

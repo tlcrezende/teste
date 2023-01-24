@@ -23,12 +23,10 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-  # Retorna todos os reviews de um livro específico
   def index_book
     render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
 
-  # Retorna todos os reviews de um usuário específico
   def index_user
     render json: @reviews, meta: meta_attributes(@reviews, {average: @average}), adapter: :json
   end
