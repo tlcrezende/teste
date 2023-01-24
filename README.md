@@ -11,3 +11,5 @@ The main idea of ​​this project is that users can enter the platform, regist
 - List all reviews from specific book or user and create his own reviews
 - See the score of a specific book or specific user
 - Ask for book recommendations based in score and self genres
+
+#### API Documentation
