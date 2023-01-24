@@ -6,10 +6,10 @@ class Api::V1::RecommendationsController < ApplicationController
   before_action :get_other_recommendation, only: :other
   
   def first
-    render json: @first_recommendarion
+    render json: @first_recommendation
   end
 
   def other 
-    render json: @others_recommendarion
+    render json: @others_recommendation
   end
 end

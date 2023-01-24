@@ -1,6 +1,8 @@
 module Recommendation
   private
   
+  # It takes the books of the current user, and counts how many times each genre appears, then sorts
+  # them by the most read, and returns the first two genres
   def get_genres_most_read
     genres = {}
     current_api_user.books.each do |book|
@@ -14,6 +16,7 @@ module Recommendation
     genres_most_read = [genres_sorteds[0][0], genres_sorteds[1][0]]
   end
 
+  # returns the top 3 books with the specified genres
   def get_books_recommendation
     genres_most_read = get_genres_most_read
     books_recommmendation = {}
@@ -29,8 +32,10 @@ module Recommendation
     end
     books_recommmendation_sorteds = books_recommmendation.sort_by {|key, value| -value}
     books_recommmendation_sorteds = [[15], [16], [17]] if books_recommmendation_sorteds.count == 0
+    return books_recommmendation_sorteds
   end
-
+  
+  # Return a default recommendation or 3 books
   def get_recommendation
     books_recommmendation = get_books_recommendation
     return recommendation_output = [Book.find(10)] if books_recommmendation.nil? 
@@ -46,13 +51,11 @@ module Recommendation
   end
 
   def get_first_recommendation
-    @first_recommendarion = get_recommendation
-    @first_recommendarion[0]
+    @first_recommendation = get_recommendation[0]
   end
 
   def get_other_recommendation
-    @others_recommendarion = get_recommendation
-    @others_recommendarion[1, 2] 
-    @others_recommendarion = {message: "We cant calculate any recommendation, please add more books to your virtual library"} if get_recommendation.count < 2
+    @others_recommendation = get_recommendation[1, 2]
+    @others_recommendation = {message: "We cant calculate any recommendation, please add more books to your virtual library"} if get_recommendation.count < 1
   end
 end
