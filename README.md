@@ -13,3 +13,4 @@ The main idea of ​​this project is that users can enter the platform, regist
 - Ask for book recommendations based in score and self genres
 
 #### API Documentation
+- https://documenter.getpostman.com/view/23883837/2s8Z73zX4A
